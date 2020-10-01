@@ -1,0 +1,115 @@
+body {
+	background-color: #e8e8e8;
+}
+
+.container {
+	margin: 11vw 0px 0px 11vw;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 1.1vw;
+}
+
+.container__list {
+	color: #273d46;
+}
+.container__list li {
+	margin-top: 0.3vw;
+}
+.container__list li:before {
+	content: '';
+	width: 1.3vw;
+	height: 1.3vw;
+	display: inline-block;
+	margin: 0px 10px 0px 0px;
+	background: url(../img/check_icon.png) center 80%/100% no-repeat;
+}
+.container__list li:hover:before {
+	content: '';
+	background-color: #000;
+	border-radius: 10px  ;
+}
+.container__list li:first-child {
+	margin: 0;
+}
+.container__list li:nth-child(1) {
+	text-decoration: line-through;
+}
+.container__list li:nth-child(1):hover {
+	text-decoration: none;
+}
+.container__list li:nth-child(2) {
+	font-weight: bold;
+}
+.container__list li:nth-child(2):hover {
+	font-weight: normal;
+	color: red;
+}
+.container__list li:nth-child(3) {
+	font-style: italic;
+}
+.container__list li:nth-child(3):hover {
+	font-style: normal;
+}
+.container__list li:nth-child(4) {
+	text-transform: uppercase;
+}
+.container__list li:nth-child(4):hover {
+	text-transform: none;
+}
+
+
+.container__bottom {
+	display: inline-block;
+	background: #80b7b3;
+	margin-top: 2.8vw;
+
+	border-radius: 25px;
+	height: 2.3vw;
+	width: 10vw;
+
+	box-shadow: 0 6px 40px rgba(128, 183, 179, 0.54);
+
+	color: #fff;
+	text-align: center;
+	font-size: 0.73vw;
+	text-transform: uppercase;
+	line-height: 2.3vw;
+	letter-spacing: 0.194vw;
+}
+.container__bottom span {
+	padding-right: 1.6vw;
+	background: url(../img/next.png) right/12% no-repeat;
+}
+.container__bottom:hover {
+	background: #3a5856;
+}
+
+.container__bottom:active {
+	background: #818181;
+}
+
+.container__input {
+	display: block;
+	height: 2.4vw;
+	width: 15vw;
+	margin-top: 1vw;
+}
+.container__input:focus {
+	box-shadow: 0 0 20px rgba(127, 190, 213, 0.93);
+}
+
+.container__text-block {
+	margin-top: 3vw; 
+}
+.container__text-block p {
+	margin-top: 1vw; 
+}
+.container__text-block p:first-child {
+	margin: 0; 
+}
+.container__text_first-line:first-line {
+	color: red;
+}
+.container__text_first-letter:first-letter {
+	color: red;
+	font-size: 2.1vw; 
+}

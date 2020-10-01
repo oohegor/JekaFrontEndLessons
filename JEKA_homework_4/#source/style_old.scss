@@ -1,0 +1,287 @@
+// заметки
+//
+// 1) все так называемые переменные - это константы, раз объявив уже не перезапишешь
+// 2) шаблоны, они не деблирует ксс код на выходе, а миксины да, следовательно их нужно использовать только, когда нужна передача аргументов
+// 
+// 
+// 
+
+// --------- Импорты --------- //
+// Кастомный файл обнуляющих стилей
+@import "nullstyle";
+
+// --------- Переменные --------- //
+// Цвета
+$darkGray: #445162;
+$whiteGray: #f5f5f5;
+$white: #fff;
+$brown: #333;
+// Размер Экрана
+$maxPageWidth: 1280px;
+
+
+// --------- Функции --------- //
+// Возвращает процентное соотношение пиксельной ширины блока к общему размеру страницы
+@function getPercentageWidth($widthPx: $maxPageWidth, $fromWidthPx: $maxPageWidth) {	// if you didn't set params, it return 100%
+@return $widthPx / $fromWidthPx * 100%;
+}
+
+
+// --------- Миксины --------- //
+//
+
+// --------- Шаблоны --------- //
+//
+%block-standart-props {
+	width: 100%;
+	padding: 50px;
+}
+
+%flex-row-props {
+	width: 100%;
+	display: inline-flex;
+	justify-content: space-between;
+}
+
+%h2-title-props {
+	color: $darkGray;
+	font-size: 30px;
+}
+
+%img-standart-props {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+
+
+// --------- SCSS --------- //
+.wrapper{
+	max-width: $maxPageWidth;
+	margin: 0 auto;
+	height: 100%;
+	background-color: $white;
+	color: $brown;
+
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.welcome-block {
+	$this: &;
+
+	@extend %block-standart-props;
+
+	border-radius: 50px 50px 0 0;
+	background-color: $darkGray;
+	color: $white;
+
+	&__row {
+		@extend %flex-row-props;
+
+		#{$this}__list {
+			h1 {
+				font-size: 60px;
+			}
+
+			ul {
+				margin-top: 35px;
+			}
+			li {
+				font-size: 20px;
+				line-height: 36px;
+			}
+			li:before {
+				content: '';
+				display: inline-block;
+				width: 25px;
+				height: 20px;
+				margin-right: 10px;
+				background: url('../img/check_icon.png') top center no-repeat no-repeat;
+			}
+		}
+
+		#{$this}__img {
+			margin-left: 2rem;
+			width: 0 1 getPercentageWidth($widthPx: 470px, $fromWidthPx: $maxPageWidth - 100px);	// minus 100px due parent paddings (50px + 50px) (in %block-standart-props)
+			height: 214px;
+
+			img {
+				@extend %img-standart-props;
+			}
+		}
+	}
+}
+
+.about-block {
+	$this: &;
+
+	@extend %block-standart-props;
+
+	&__row {
+		@extend %flex-row-props;
+
+		#{$this}__img {
+			margin-right: 2rem;
+			width: 0 1 getPercentageWidth($widthPx: 430px, $fromWidthPx: $maxPageWidth - 100px);
+			min-width: 330px;
+			min-height: 186px;
+			align-self: center;
+
+			img {
+				@extend %img-standart-props;
+			}
+		}
+		#{$this}__description {
+			margin-right: getPercentageWidth($widthPx: 70px, $fromWidthPx: $maxPageWidth - 100px);
+			flex: 0 1 getPercentageWidth($widthPx: 640px, $fromWidthPx: $maxPageWidth - 100px);
+
+			h2 {
+				@extend %h2-title-props;
+			}
+			p {
+				font-size: 16px;
+				line-height: 24px;
+				margin-top: 25px;
+			}
+		}
+	}
+}
+
+
+.content-block {
+	$this: &;
+	
+	@extend %block-standart-props;
+	padding-bottom: getPercentageWidth($widthPx: 50px) - 2%;	// because look to ***
+	background-color: #f5f5f5;
+	
+	text-align: center;
+	h2 {
+		@extend %h2-title-props;
+	}
+
+	&__row-wrap {
+		margin-top: 30px;
+
+		@extend %flex-row-props;
+		flex-wrap:wrap;
+		text-align: left;
+
+		.content-block-item-row {
+			@extend %flex-row-props;
+			width: getPercentageWidth($widthPx: 580px, $fromWidthPx: $maxPageWidth - 100px);
+			margin-bottom: 2%;		// here ***
+
+			&__img {
+				width: getPercentageWidth($widthPx: 200px, $fromWidthPx: 580px);
+				height: 150px;
+
+				img {
+					@extend %img-standart-props;
+				}
+			}
+			&__text {
+				width: getPercentageWidth($widthPx: 360px, $fromWidthPx: 580px);
+
+				h3 {
+					@extend %h2-title-props;
+					font-size: 24px;
+				}
+				p {
+					margin-top: 15px;
+					font-size: 16px;
+					line-height: 24px;
+				}
+			}
+		}
+	}
+}
+
+.socials-block {
+	@extend %block-standart-props;
+
+	text-align: center;
+	h2 {
+		@extend %h2-title-props;
+	}
+
+	&-row {
+		width: getPercentageWidth($widthPx: 990px, $fromWidthPx: $maxPageWidth - 100px);
+		min-height: 500px;
+		margin-top: 30px;
+
+		@extend %flex-row-props;
+		text-align: left;
+
+		.socials-block-column {
+			width: getPercentageWidth($widthPx: 300px, $fromWidthPx: 990px);
+			background-color: $darkGray;
+
+			display: inline-flex;
+			flex-direction: column;
+
+			color: $white;
+
+			h3 {
+				text-align: center;
+				text-transform: uppercase;
+				font-size: 24px;
+				margin:18px 0 18px 0;
+			}
+
+			&__action {
+				background-color: #fff;
+				color: $darkGray;
+				border: 2px solid #445162;
+
+				p {
+					text-align: center;
+					font-size: 2vw; // 40 px
+					margin:18px 0 18px 0;
+				}
+			}
+
+			&__text {
+				flex: 1 1 auto;
+				margin: 20px 30px 20px 20px;
+				p:first-child {
+					margin-top: 0px;
+				}
+				p {
+					font-size: 14px;
+					line-height: 24px;
+					margin-top: 35px;
+				}
+			}
+
+			button {
+				width: getPercentageWidth($widthPx: 260px, $fromWidthPx: 300px);
+				height: 40px;
+				background-color: #ffffff;
+				margin: 20px;
+
+				text-align: center;
+				font-size: 18px;
+				line-height: 18px;
+				color: #445161;
+				font-weight: bold;
+			}
+		}
+	}
+}
+
+.footer-block {
+	@extend %block-standart-props;
+	padding: 0px;
+
+	background-color: $whiteGray;
+	border-radius: 0 0 50px 50px;
+	height: 64px;
+	text-align: center;
+
+	&__row {
+		padding-top: 25px;
+	}
+}

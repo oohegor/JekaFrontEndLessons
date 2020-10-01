@@ -1,0 +1,289 @@
+
+// --------- Импорты --------- //
+// Кастомный файл обнуляющих стилей
+@import "nullstyle";
+
+// --------- Переменные --------- //
+// Цвета
+// Размер Экрана
+
+// --------- Функции --------- //
+// Возвращает процентное соотношение пиксельной ширины блока к общему размеру страницы
+@function getPctWidth($widthPx: $contentPageWidth, $fromWidthPx: $contentPageWidth) {	// if you didn't set params, it return 100%
+@return $widthPx / $fromWidthPx * 100%;
+}
+
+// --------- Шаблоны --------- //
+%flex-row-props {
+	display: flex;
+}
+
+%img-standart-props {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+// --------- Миксины --------- //
+
+
+
+
+// --------- SCSS --------- //
+body {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.wrapper{
+	max-width: $maxPageWidth;
+	min-height: 100%;
+	overflow: hidden;
+	margin: 0 auto;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+.content {
+	flex: 1 1 auto;
+}
+
+.container {
+	max-width: $contentPageWidth;
+	margin: 0 auto;
+}
+
+.welcome-block {
+	$this: &;
+	padding: 50px 0;
+	background-color: $darkGray;
+	border-radius: 50px 50px 0 0;
+
+	&__row {
+		@extend %flex-row-props;
+		justify-content: space-between;
+
+		#{$this}__body {
+			color: $white;
+			padding-right: 30px;
+
+			#{$this}__title {
+				margin-bottom: 40px;
+				text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+				font-size: 60px;
+			}
+
+			#{$this}__list {
+				li {
+					text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
+					font-size: 20px;
+					margin: 0px 0px 15px 0px;
+					// padding: 0px 0px 0px 36px;
+					// background: url('../img/check_icon.png') 0 1px no-repeat;	// instead li:before
+				}
+				li:last-child{margin: 0;}
+				li:before {
+					content: '';
+					display: inline-block;
+					width: 25px;
+					height: 20px;
+					margin-right: 10px;
+					background: url('../img/check_icon.png') 0 2px no-repeat;
+				}
+			}
+		}
+
+		#{$this}__img {
+			width: getPctWidth($widthPx: 470px);
+			height: 214px;
+
+			img {
+				@extend %img-standart-props;
+			}
+		}
+	}
+}
+
+.title {
+	color: $darkGray;
+	font-size: 30px;
+}
+
+.about-block {
+	$this: &;
+	padding: 50px 0;
+
+	&__row {
+		@extend %flex-row-props;
+
+		#{$this}__img {
+			width: getPctWidth($widthPx: 430px);
+			margin-right: 40px;
+			min-width: 330px;
+			align-self: center;
+
+			img {
+				@extend %img-standart-props;
+			}
+		}
+		#{$this}__description {
+			// margin-right: getPctWidth($widthPx: 70px);
+			flex: 1 1 getPctWidth($widthPx: 640px);
+
+			#{$this}__text {
+				font-size: 16px;
+				line-height: 24px;
+				margin-top: 25px;
+				color: $darkBrown;
+
+				p {
+					margin: 0px 0px 15px 0px;
+				}
+			}
+		}
+	}
+}
+
+
+.content-block {
+	$this: &;
+	background-color: $whiteGray;
+	padding: 50px 0 20px 0;
+
+	&__title {
+		text-align: center;
+		margin-bottom:30px;
+	}
+
+	&__row-wrap {
+		@extend %flex-row-props;
+		flex-wrap:wrap;
+		margin: 0px -8px;
+
+		#{$this}__column {
+			flex: 0 1 50%;
+			margin: 0px 0px 30px 0px;
+
+			.item {
+				&__row {
+					@extend %flex-row-props;
+				}
+				&__img {
+					width: getPctWidth($widthPx: 200px, $fromWidthPx: 580px);
+					height: 150px;
+
+					img {
+						@extend %img-standart-props;
+					}
+				}
+				&__body {
+					width: getPctWidth($widthPx: 360px, $fromWidthPx: 580px);
+					padding: 0px 0px 0px 15px;
+
+					.item__title {
+						color: $darkGray;
+						font-size: 24px;
+						margin: 0px 0px 15px 0px;
+					}
+					.item__text {
+						color: $darkBrown;
+						font-size: 16px;
+						line-height: 24px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.socials-block {
+	$this: &;
+	padding: 50px 0;
+
+	&__title {
+		text-align: center;
+		margin: 0px 0px 30px 0px;
+	}
+
+	&__body {
+		width: getPctWidth($widthPx: 990px);
+		margin: 0px auto;
+
+		#{$this}__row {
+			@extend %flex-row-props;
+			margin: 0px getPctWidth($widthPx: -22px, $fromWidthPx: 990px);
+
+			#{$this}__column {
+				@extend %flex-row-props;	// (***)	теперь блоки адаптивны, и будут менять свой размер взависимости от текста
+				padding: 0px getPctWidth($widthPx: 22px, $fromWidthPx: 990px);
+				flex: 0 1 33.333%;	// разрешаю уменьшаться этодля интернет иксплорера, тип он может не понять 33.3%, а эта штука его немного лечит
+
+				#{$this}__item {
+					@extend %flex-row-props;	// (***)
+					flex-direction: column;	// (***)
+					background-color: $darkGray;
+					border: 1px solid $darkGray;
+					border-radius: 5px;
+
+					color: $white;
+					text-align: center;
+
+					#{$this}__subtitle {
+						padding: 15px 0;
+						font-size: 24px;
+						text-transform: uppercase;
+					}
+
+					#{$this}__label {
+						background-color: $white;
+						padding: 12px 0;
+						color: $darkGray;
+						font-size: 40px;
+					}
+
+					#{$this}__text {
+						text-align: left;
+						padding: 20px;
+						font-size: 16px;
+						line-height: 24px;
+						flex: 1 1 auto;
+
+						p {margin: 0px 0px 15px 0px;}
+						p:last-child{margin: 0;}
+					}
+
+					#{$this}__btn {
+						display: block;
+						margin: 0px 20px;
+						margin-bottom: 20px;
+
+						line-height: 40px;
+						background-color: $white;
+						border-radius: 5px;
+						color: $darkGray;
+						font-size: 18px;
+						font-weight: 700;
+					}
+				}
+			}
+		}
+	}
+}
+
+.footer-block {
+	background-color: $whiteGray;
+	border-radius: 0 0 50px 50px;
+
+	&__row {
+		@extend %flex-row-props;
+		height: 65px;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__text {
+		color: $darkGray;
+		font-size: 12px;
+		letter-spacing: 0.3px;
+	}
+}

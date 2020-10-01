@@ -1,0 +1,480 @@
+
+//////////////////////////////////////////////////////////////////////
+//							Переменные								//
+//////////////////////////////////////////////////////////////////////
+// Шрифт по умолчанию
+$fontfamily: "Lato";
+// Цвета
+$white: #fff;
+$black: #000;
+$menucolor: #4d4959;
+$titlecolor: #353738;
+$textcolor: #848787;
+$bgcolor: #f7f7f7;
+// Размер Экрана
+$maxPageWidth: 1600px;
+$contentPageWidth: 1100px;
+$minwidth: 320px;
+
+//////////////////////////////////////////////////////////////////////
+//								Функции								//
+//////////////////////////////////////////////////////////////////////
+// Возвращает процентное соотношение пиксельной ширины блока к общему размеру страницы 	// if you didn't set params, it return 100%
+@function getPctWidth($widthPx: $contentPageWidth, $fromWidthPx: $contentPageWidth) {
+	@return $widthPx / $fromWidthPx * 100%;
+}
+
+//////////////////////////////////////////////////////////////////////
+//								Шаблоны								//
+//////////////////////////////////////////////////////////////////////
+%flexbox {display: -webkit-box;display: -webkit-flex;display: -moz-box;display: -ms-flexbox;display: flex;font-size: 0;}
+%flexboxinline {display: -webkit-inline-box;display: -moz-inline-box;display: -webkit-inline-flex;display: -ms-inline-flexbox;display: inline-flex;}
+
+%img-standart-props {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+//////////////////////////////////////////////////////////////////////
+//								Миксины								//
+//////////////////////////////////////////////////////////////////////
+@mixin anim($time, $delay) {-webkit-transition: all $time ease $delay;-moz-transition: all $time ease $delay;-o-transition: all $time ease $delay;transition: all $time ease $delay;}
+@mixin anim_cubic($time, $delay) {-webkit-transition: all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-moz-transition: all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-o-transition: all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;transition: all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;}
+@mixin animate($name, $time, $infinite, $type) {-webkit-animation:$name $time+s $infinite $type;-moz-animation:$name $time+s $infinite $type;-o-animation:$name $time+s $infinite $type;animation:$name $time+s $infinite $type;}
+@mixin rotate($deg) {-webkit-transform: rotate($deg);-moz-transform: rotate($deg);-o-transform: rotate($deg);transform: rotate($deg);}
+@mixin scale($num) {-webkit-transform: scale($num);-moz-transform: scale($num);-o-transform: scale($num);transform: scale($num);}
+@mixin skew($num) {-webkit-transform: skewX($num);-moz-transform: skewX($num);-o-transform: skewX($num);transform: skewX($num);}
+@mixin cnt($h) {display: flex; flex-direction: column; height: $h;text-align: center;align-items: stretch;justify-content: center;}
+@mixin tr($x, $y, $z) {transform: translate3d($x, $y, $z);-webkit-transform: translate3d($x, $y, $z);-moz-transform:translate3d($x, $y, $z);-ms-transform:translate3d($x, $y, $z);-o-transform:translate3d($x, $y, $z);}
+@mixin flexorder($val){-webkit-box-ordinal-group: $val;-moz-box-ordinal-group: $val;-ms-flex-order: $val;-webkit-order: $val;order: $val;}
+
+//////////////////////////////////////////////////////////////////////
+//							Импорты									//
+//////////////////////////////////////////////////////////////////////
+// Кастомный файл обнуляющих стилей
+@import "nullstyle";
+// Шрифты
+@import "_fonts";
+// Вспомогательные стили
+@import "_ui.scss";
+@import "_header.scss";
+@import "_footer.scss";
+
+//////////////////////////////////////////////////////////////////////
+//								CODE								//
+//////////////////////////////////////////////////////////////////////
+
+body {
+}
+//<оболочка>====================================================================================================
+.wrapper{
+	min-height: 100%;
+	overflow: hidden;
+}
+//</оболочка>====================================================================================================
+
+//<основная сетка>====================================================================================================
+.container {
+	max-width: $contentPageWidth + 30px;
+	padding: 0px 15px;
+	margin: 0px auto;
+}
+//</основная сетка>====================================================================================================
+
+//<основной блок>====================================================================================================
+.page {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	@extend %flexbox;
+	flex-direction: column;
+}
+.main-sreen {
+	flex: 1 0 100%;	//разрешаем увеличиваться, но запрещаем уменьшаться (фулл скрин картинка)
+	position: relative;
+	&__bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+}
+//====================================================================================================
+.content {
+}
+//====================================================================================================
+.generation {
+	padding: 120px 0;
+	background-color: $bgcolor;
+	// .generation__block
+	&__block {
+	}
+	@media (max-width: 900px) {
+		padding: 80px 0px;
+	}
+	@media (max-width: 600px) {
+		padding: 70px 0;
+	}
+}
+//====================================================================================================
+.block {
+	text-align: center;
+	// .block__icon
+	&__icon {
+		margin: 0px 0px 30px 0px;
+	}
+	// .block__title
+	&__title {
+		color: $titlecolor;
+		font-size: 18px;
+		font-weight: 700;
+		line-height: 24px;
+		text-transform: uppercase;
+		letter-spacing: 3.6px;
+		margin: 0px 0px 18px 0px;
+	}
+	// .block__text
+	&__text {
+		color: $textcolor;
+		font-size: 18px;
+		line-height: 34px;
+		// .block__text_j
+		&_j {
+			text-align: justify;
+			font-size: 16px;
+			line-height: 30px;
+			&:after {
+				content: '';
+				display: block;
+				margin: 35px auto 0px auto;
+				width: 50px;
+				height: 1px;
+				background-color: #d7d7d7;
+			}
+		}
+	}
+	@media (max-width: 1500px) {
+		&__text {
+			&_j {
+				&:after{
+					margin: 15px auto 0px auto;
+				}
+			}
+		}
+	}
+}
+//====================================================================================================
+.brands {
+	// .brands_rev
+	&_rev {
+		.brands__column {
+			@include flexorder(1);
+			&_b {
+				@include flexorder(2);
+			}
+		}
+	}
+	// .brands_last
+	&_last {}
+	// .brands__row
+	&__row {
+		@extend %flexbox;
+	}
+	// .brands__column
+	&__column {
+		flex: 0 1 33.333%;
+		// .brands__column_b
+		&_b {
+			flex: 0 1 66.667%;
+		}
+	}
+	// .brands__item
+	&__item {}
+	// .brands__content
+	&__content {
+		padding: 70px 65px 55px 65px;
+		position: relative;
+		&:after{
+			content:'';
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			margin: 0px 0px 0px -10px;
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-top: 10px solid $white;
+			z-index: 2;
+		}
+	}
+	// .brands__image
+	&__image {
+		padding: 0px 0px 37.5% 0px;
+	}
+	@media (max-width: 1500px) {
+		&__content {
+			padding: 40px 35px 30px 35px;
+		}
+	}
+	@media (max-width: 1100px) {
+		&_last {
+			.brands__column {
+				&:nth-child(1){@include flexorder(2);}
+				&:nth-child(2){@include flexorder(1);}
+				&:nth-child(3){@include flexorder(3);}
+			}
+		}
+		&__row {
+			flex-direction: column;
+		}
+	}
+}
+//====================================================================================================
+.item {
+	height: 100%;
+	display: block;
+	position: relative;
+	// .item__logo
+	&__logo {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		@extend %flexbox;
+		flex-direction: column;
+		@include anim(0.3s, 0s);
+		justify-content: center;
+		align-items: center;
+		z-index: 2;
+		span {
+			margin: 10px 0px 0px 0px;
+			font-size: 14px;
+			font-weight: 700;
+			letter-spacing: 2.8px;
+			text-transform: uppercase;
+			color: $white;
+		}
+	}
+	// .item__image
+	&__image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+	&:hover {
+		.item__logo {
+			background-color: rgba(100, 194, 158, 0.4);
+		}
+	}
+	@media (max-width: 1100px) {
+		height: auto;
+		padding: 0px 0px 70% 0px;
+	}
+}
+//====================================================================================================
+.slider {
+	background-color: $bgcolor;
+	padding: 120px 0 60px 0;
+	// .slider__body
+	&__body {}
+	// .slider__item
+	&__item {
+		text-align: center;
+	}
+	// .slider__icon
+	&__icon {
+		margin: 0px 0px 35px 0px;
+	}
+	// .slider__title
+	&__title {
+		color: $titlecolor;
+		font-size: 18px;
+		font-weight: 700;
+		margin: 0px 0px 20px 0px;
+		span {
+			font-weight: 300;
+			color: $textcolor;
+		}
+	}
+	// .slider__text
+	&__text {
+		text-align: center;
+		color: $textcolor;
+		font-size: 24px;
+		font-style: italic;
+		line-height: 34px;
+	}
+	@media (max-width: 1100px) {
+		padding: 60px 0 30px 0;
+		&__text {
+			font-size: 18px;
+		}
+	}
+}
+//====================================================================================================
+.shop {
+	// .shop__body
+	&__body {
+		@extend %flexbox;
+	}
+	// .shop__column
+	&__column {
+		flex: 0 1 16.666%;
+		// .shop__column_b
+		&_b {
+			flex: 0 1 33.333%;
+		}
+	}
+	// .shop__block
+	&__block {}
+	// .shop__footer
+	&__footer {
+		padding: 75px 0px;
+		text-align: center;
+		background-color: #282f35;
+	}
+	// .shop__btn
+	&__btn {
+		display: inline-block;
+		height: 50px;
+		line-height: 48px;
+		letter-spacing: 2.8px;
+		color: $white;
+		padding: 0px 60px;
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase;
+		border: 1px solid rgba(255,255,255, 0.5);
+	}
+
+	@media (max-width: 1100px) {
+		&__body {
+			flex-wrap: wrap;
+		}
+		&__column {
+			flex: 0 1 50%;
+			&:first-child{
+				flex: 1 1 100%;
+			}
+			&:last-child{
+				flex: 1 1 100%;
+			}
+		}
+		&__footer {
+			padding: 50px 0px;
+		}
+		&__btn {
+			padding: 0px 30px;
+		}
+	}
+}
+.block-shop {
+	height: 100%;
+	// .block-shop__row
+	&__row {
+		@extend %flexbox;
+	}
+	// .block-shop__column
+	&__column {
+		flex: 0 1 50%;
+	}
+	// .block-shop__item
+	&__item {
+		height: auto;
+		padding: 0px 0px 50% 0px;
+		.item__logo {
+			opacity: 0;
+			visibility: visible;
+		}
+		.item__logo:hover {
+			opacity: 1;
+		}
+		//.block-shop__item_b
+		&_b {
+			padding: 0px 0px 200.5% 0px;
+		}
+		//.block-shop__item_l
+		&_l {
+			padding: 0px 0px 100% 0px;
+		}
+	}
+}
+//====================================================================================================
+.subscribe {
+	// .subscribe__body
+	&__body {
+		padding: 110px 0px;
+		max-width: 534px;
+		margin: 0px auto;
+		text-align: center;
+	}
+	// .subscribe__logo
+	&__logo {
+		margin: 0px 0px 39px 0px;
+	}
+	// .subscribe__label
+	&__label {
+		color: #848789;
+		font-style: italic;
+		font-size: 24px;
+		margin: 0px 0px 35px 0px;
+	}
+	// .subscribe__form
+	&__form {
+		@extend %flexbox;
+	}
+	// .subscribe__input
+	&__input {
+		flex: 1 1 auto;
+		padding: 0px 8px 0px 0px;
+		.input {
+			width: 100%;
+			height: 69px;
+			padding: 0px 25px;
+			border: 1px solid #d3d7d9;
+			background-color: $white;
+			font-size: 20px;
+		}
+		::placeholder {
+			color: $textcolor;
+		}
+	}
+	// .subscribe__button
+	&__button {
+		flex: 0 0 126px;
+	}
+	// .subscribe__btn
+	&__btn {
+		width: 100%;
+		height: 69px;
+		line-height: 69px;
+		color: $white;
+		font-size: 24px;
+		text-transform: uppercase;
+		font-weight: 300;
+		background-color: #64c29e;
+	}
+	@media (max-width: 750px) {
+		&__body {
+			padding: 50px 0px;
+		}
+	}
+	@media (max-width: 500px) {
+		&__form {
+			display: block;
+		}
+		&__input {
+			padding: 0px 0px 8px 0px;
+		}
+	}
+}
+//====================================================================================================
+//</основной блок>====================================================================================================

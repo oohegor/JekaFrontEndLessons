@@ -1,0 +1,59 @@
+.cssstyles {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.size30 {
+	font-size: 30px;
+}
+
+.size25 {
+	font-size: 25px;
+}
+
+.bolttext {
+	font-weight: 700;
+}
+
+.redtext {
+	color: red;
+}
+
+.size20 {
+	font-size: 20px;
+}
+
+.righttext {
+	text-align: right;
+}
+
+.uppercasetext {
+	text-transform: uppercase;
+}
+
+.otherfont {
+	font-family: monospace;
+}
+
+.italictext {
+	font-style: italic;
+}
+
+.decorationtext {
+	text-decoration: underline;
+}
+
+.centertext {
+	text-align: center;
+}
+
+.decorationthrough {
+	text-decoration: line-through;
+}
+
+.size15 {
+	font-size: 15px;
+}
+
+.shadowtext {
+	text-shadow: 20px;
+}

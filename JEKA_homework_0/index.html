@@ -1,0 +1,157 @@
+<!-- Сообщаем браузеру как стоит обрабатывать эту страницу -->
+<!DOCTYPE html>
+<!-- Оболочка документа, указываем язык содержимого -->
+<html lang="ru">
+<!-- Заголовок страницы, контейнер для других важных данных (не отображается) -->
+<head>
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Заголовок страницы в браузере -->
+	<title>Знакомство с HTML тегами и CSS</title>
+	<!-- Кодировка страницы -->
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+<!-- Отображаемое тело страницы -->
+<body>
+	<h1>Легкость старта карьеры. Специалист или Работник.</h1>
+	<p>Представим себе что специальность выбрана, обучение пройдено и ты думаешь над тем где проще начать свою карьеру.</p>
+	<p>
+		<span>
+			Если же ты не знаешь какую специальность выбрать и с чего начать обучение смотри выпуск «<a target="_blank" href="https://youtu.be/WGIzvVwUfYs">Как стать IT-специалистом с нуля.</a>»
+		</span>
+	</p>
+	<p>Так вот, давай рассмотрим основные отличия старта твоего пути в офисе и фрилансе. Для этого я собрал несколько основных требований которым нужно соответствовать что бы получить работу.</p>
+	<h2>Требования для старта на фрилансе:</h2>
+	<ol>
+		<li>Владеть практическими и теоретическими знаниями по своей специальности. То есть уметь делать то чем решил заниматься.</li>
+		<li>Иметь доступ к необходимым инструментам. Другими словами  купить, одолжить либо взять в аренду необходимые инструменты либо аппаратуру для качественного выполнения заказа.</li>
+		<li>Найти рынок сбыта твоего товара либо услуг. Зарегистрироваться на фриланс биржах либо найти другие площадки где можно предложить именно твои услуги.</li>
+		<li>Иметь базовые устные или письменные навыки коммуникации. То есть уметь говорить с людьми, клиентами.</li>
+	</ol>
+	<h2>Пример:</h2>
+	<p>Ты художник, соответственно ты должен уметь рисовать, владеть всеми необходимыми кисточками, красками и собственно быть готовым найти потенциального клиента и предложить свои услуги.</p>
+	<img src="img/like.png" alt="" />
+	<p>Выходит что тебе достаточно быть специалистом в своем деле и ты уже можешь начинать карьеру фрилансера.</p>
+	<p>Требования для старта карьеры в офисе крайне разнообразны в зависимости от конкретной компании, я постарался выделить основные.</p>
+	<h2>Требования для старта в компании:</h2>
+	<ul>
+		<li>Тут тоже нужно владеть знаниями по своей специальности. Но именно теми подвидами, технологиями, инструментами которые требует конкретная вакансия.</li>
+		<li>Владеть дополнительными знаниями программ и практик которые применяются в конкретном офисе.</li>
+		<li>Быть молодым. Этот пункт не всегда озвучиваться, но к сожалению практика показывает, что его стоит сюда включить.</li>
+		<li>Владеть английским языком. В самом знании языка ничего плохого не вижу, но тем не менее это дополнительное требование.</li>
+		<li>Быть командным игроком. Как правило, для компании это важнее чем твои знания. Для руководства необходимо без болезненно управлять коллективом, по этому «выскочки» и чересчур амбициозные кандидаты которые не привыкли играть по правилам скорее всего будут отсеяны.</li>
+	</ul>
+	<h2>Пример:</h2>
+	<p>Ты программист, соответственно тебе нужно владеть именно тем языком программирования который указан в вакансии. А так же дополнительно владеть знаниями различных офисных программ для работы в команде. Как правило, быть молодым и знать английский. <br /> Уметь и любить работать в коллективе, а твои амбиции не должны выходить за рамки компании.</p>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<p>========================================================================</p>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<form action="#" method="post" enctype="multipart/form-data">
+		<div>
+			<p>Name</p>
+			<input type="text" name="username" tabindex="1">
+		</div>
+
+		<div>
+			<p>Password</p>
+			<input type="password" name="password" tabindex="2">
+		</div>
+
+		<div>
+			<p>Phone</p>
+			<input type="tel" name="userphone" tabindex="3">
+		</div>
+
+		<div>
+			<p>Sex</p>
+			<div><input type="radio" name="gender" value="man" tabindex="4">Man</div>
+			<div><input type="radio" name="gender" value="woman" tabindex="4">Woman</div>
+		</div>
+
+		<div>
+			<p>Owner</p>
+			<div><input type="checkbox" name="bicycle" value="bike" tabindex="5">Bicycle</div>
+			<div><input type="checkbox" name="car" value="car" tabindex="6">Car</div>
+			<div><input type="checkbox" name="apartment" value="house" tabindex="7">Apartment</div>
+		</div>
+
+		<div>
+			<p>Additional information</p>
+			<textarea name="note" tabindex="8"></textarea>
+		</div>
+
+		<div>
+			<p>Attache file</p>
+			<input type="file" name="file" tabindex="9">
+		</div>
+
+		<div>
+			<p>Favorite color</p>
+			<select name="color" tabindex="10">
+				<option selected value="red">Red</option>
+				<option value="yellow">Yellow</option>
+				<option value="blue">Blue</option>
+			</select>
+		</div>
+
+		<div>
+			<p>Actions</p>
+			<div>
+				<button type="reset" tabindex="11">Reset</button>
+				<button type="submit" tabindex="12">Send</button>
+			</div>
+		</div>
+
+	</form>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<p>========================================================================</p>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div class="cssstyles">
+		<p class="size30">Фрилансер по жизни</p>
+		<p>Поставь лайк всем видосам фрилансера и получи +1000 очков кармы. Поставь лайк всем видосам фрилансера и получи +1000 очков кармы. Поставь лайк всем видосам фрилансера и получи +1000 очков кармы. Поставь лайк всем видосам фрилансера и получи +1000 очков кармы. </p>
+		<p class="size25">CSS. Свойства шрифта и текста</p>
+		<p class="boltext">Этот текст жирный. Очень жирный текст. Этот текст жирный. Очень жирный текст. Этот текст жирный. Очень жирный текст. </p>
+		<p class="redtext">Этот текст красный. Очень красный текст. Этот текст красный. Очень красный текст. Этот текст красный. Очень красный текст. </p>
+		<p class="size20">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+		<p class="righttext">Lorem ipsum dolor sit.</p>
+		<p class="uppercasetext otherfont">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+		<p class="italictext">Lorem ipsum dolor sit amet.</p>
+		<p class="decorationtext">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+		<p class="centertext">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+		<p class="size25">Lorem ipsum dolor sit.</p>
+		<p class="decorationthrough">Lorem ipsum dolor sit amet.</p>
+		<p class="size15">Lorem ipsum dolor sit amet.</p>
+		<p class="shadowtext">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quis sunt molestias explicabo at, natus voluptates iure dolorem voluptatum deleniti ducimus vitae dicta rerum, inventore nostrum mollitia fugiat. Rem, illo.</p>
+	</div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<p>========================================================================</p>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+</body>
+</html>
